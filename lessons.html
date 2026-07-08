@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>과외 — 풍류</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Cormorant:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <style>
+    .cred { font-size:0.82rem; color:var(--ink-soft); margin-top:6px; line-height:1.55; }
+    .cred b { color:var(--ink); }
+    .tag.ok { background:#e7f2ec; color:var(--green); }
+    .price-line { font-size:1.0rem; color:var(--gold); font-weight:700; margin-top:6px; }
+    .price-line .per { font-size:0.78rem; color:var(--ink-soft); font-weight:400; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">풍류<span class="accent">.</span><span class="beta">BETA</span></a>
+    <nav class="main-nav">
+      <a href="jobs.html">구인구직</a>
+      <a href="practice.html">연습실</a>
+      <a href="lessons.html" class="active">과외</a>
+      <a href="market.html">중고거래</a>
+      <a href="#" onclick="alert('커뮤니티는 추후 오픈 예정입니다.'); return false;">커뮤니티 <span class="soon">예정</span></a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-ghost" onclick="alert('로그인은 프로토타입에서 제공되지 않습니다.')">로그인</button>
+    </div>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="container">
+    <h1>과외 매칭</h1>
+    <p class="desc">사사 라인, 입시 합격 실적, 시범레슨 여부까지 — 레슨 결정에 진짜 필요한 정보로 찾습니다. (목데이터 프로토타입)</p>
+    <div class="tabs">
+      <button class="tab active" id="tab-teacher">선생님 찾기</button>
+      <button class="tab" id="tab-request">학생 레슨 요청</button>
+    </div>
+  </div>
+</div>
+
+<div class="container board-layout">
+  <aside class="filters">
+    <button class="filter-reset filter-reset-top" id="filter-reset">필터 초기화 ↺</button>
+    <div class="filter-group">
+      <details open>
+        <summary class="filter-summary">악기 (접기/펼치기)</summary>
+        <div id="f-inst"></div>
+      </details>
+    </div>
+    <div class="filter-group"><h4>대상</h4><div class="filter-options" id="f-level"></div></div>
+    <div class="filter-group"><h4>방식</h4><div class="filter-options" id="f-mode"></div></div>
+    <div class="filter-group"><h4>조건</h4><div class="filter-options" id="f-cond"></div></div>
+  </aside>
+  <main>
+    <div class="board-toolbar">
+      <div class="search-box"><input type="text" id="search-input" placeholder="악기, 학교, 지역으로 검색"></div>
+      <select id="sort-sel" style="border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:0.88rem;background:var(--paper);font-family:inherit">
+        <option value="default">최근 등록순</option>
+        <option value="reviews">리뷰 많은 순</option>
+        <option value="matches">매칭 많은 순</option>
+        <option value="priceAsc">가격 낮은순</option>
+        <option value="priceDesc">가격 높은순</option>
+      </select>
+      <button class="btn-primary" id="btn-request">＋ 레슨 요청서</button>
+    </div>
+    <div class="crawl-note"><span class="dot"></span>요청서 작성, 선생님의 열람·응답 <b>모두 무료</b>입니다 — 견적 비용이 없어요.</div>
+    <div class="result-count" id="result-count"></div>
+    <div class="job-list" id="list"></div>
+  </main>
+</div>
+
+<!-- 레슨 요청서 모달 (숨고 벤치마킹: 구조화된 요청 → 선생님이 응답) -->
+<div class="modal-backdrop" id="request-modal">
+  <div class="modal">
+    <button class="modal-close">✕</button>
+    <h2>레슨 요청서 <span style="font-size:0.75rem;color:var(--ink-soft);font-weight:400">(작성·열람·응답 모두 무료)</span></h2>
+    <form class="form-grid" id="request-form">
+      <div class="form-row">
+        <div class="form-field">
+          <label>악기</label>
+          <select name="q-inst" required id="q-inst"></select>
+        </div>
+        <div class="form-field">
+          <label>대상·레벨</label>
+          <select name="q-level" required>
+            <option value="취미 (성인/입문)">취미 (성인/입문)</option>
+            <option value="취미 (진행 중)">취미 (진행 중)</option>
+            <option value="입시 (예중·예고)">입시 (예중·예고)</option>
+            <option value="입시 (음대)">입시 (음대)</option>
+            <option value="전공 심화">전공 심화</option>
+            <option value="유학 준비">유학 준비</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>지역</label>
+          <input type="text" name="q-region" required placeholder="예: 분당, 서울 서초구">
+        </div>
+        <div class="form-field">
+          <label>레슨 방식</label>
+          <select name="q-mode">
+            <option value="스튜디오 방문">스튜디오 방문</option>
+            <option value="출강 희망">출강 희망</option>
+            <option value="온라인">온라인</option>
+            <option value="협의 가능">협의 가능</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>주 횟수</label>
+          <select name="q-freq">
+            <option value="주 1회">주 1회</option>
+            <option value="주 2회">주 2회</option>
+            <option value="격주/협의">격주/협의</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>회당 예산</label>
+          <input type="text" name="q-budget" placeholder="예: 8~12만원">
+        </div>
+      </div>
+      <div class="form-field">
+        <label>희망 요일·시간</label>
+        <input type="text" name="q-time" placeholder="예: 평일 저녁, 주말 오전">
+      </div>
+      <div class="form-field">
+        <label>현재 수준·목표 (선생님이 판단할 수 있게)</label>
+        <textarea name="q-note" required placeholder="예: 스즈키 10권 진행 중, 11월 콩쿠르 목표. 자세 교정 위주로 원합니다."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-outline" onclick="document.getElementById('request-modal').classList.remove('open')">취소</button>
+        <button type="submit" class="btn-primary">요청서 올리기</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container"><span class="logo serif">풍류<span class="accent">.</span></span><br>국악인을 위한 플랫폼 · 프로토타입 v0.15</div>
+</footer>
+
+<a class="feedback-fab" href="mailto:ohmjin3141@naver.com?subject=%ED%92%8D%EB%A5%98%20%EA%B3%BC%EC%99%B8%20%ED%94%BC%EB%93%9C%EB%B0%B1">피드백 보내기</a>
+
+<script>
+// 리서치 반영: 사사·합격실적이 핵심 신뢰 정보, 성악은 반주자 비용 별도, 시범레슨 문화
+// 학력·입상 경력은 필수 표기, 사사는 표기하지 않음 (피드백 반영)
+const TEACHERS = [
+  { inst:"현악", detail:"가야금", name:"김○○", edu:"서울대 국악과 졸 · 한예종 전문사",
+    rating:4.9, rcount:38, matches:61, years:12, fastReply:true, verified:true,
+    prize:"전국국악경연 대통령상", record:"국악고 3명 · 국악과 합격 7명",
+    target:["입시","전공심화"], price:"회당 12만원(90분)", priceNum:12,
+    region:"서초·강남", mode:["스튜디오","출강"], trial:true, note:"입시 전문. 산조·창작 지도 경력 10년. 25현·정악 병행." },
+  { inst:"성악", detail:"판소리", name:"박○○", edu:"한예종 졸",
+    rating:4.8, rcount:21, matches:34, years:6, fastReply:true, verified:true,
+    prize:"", record:"취미 성인 지도 5년",
+    target:["취미","입시"], price:"회당 7만원(60분)", priceNum:7,
+    region:"신촌·마포", mode:["스튜디오","온라인"], trial:true, note:"성인 취미 소리 환영. 단가·눈대목 중심." },
+  { inst:"관악", detail:"대금", name:"이○○", edu:"서울대 국악과 졸 · 국립국악원 연수단원 수료",
+    rating:5.0, rcount:52, matches:89, years:15, fastReply:false, verified:true,
+    prize:"동아국악콩쿠르 금상", record:"국악과 합격 12명",
+    target:["입시","전공심화"], price:"회당 10만원(60분)", priceNum:10,
+    region:"분당·판교", mode:["스튜디오"], trial:false, note:"입시 시즌(9~12월) 대기 있음. 산조·정악 모두." },
+  { inst:"현악", detail:"해금", name:"최○○", edu:"한예종 졸 · 예술사",
+    rating:4.9, rcount:17, matches:25, years:9, fastReply:true, verified:true,
+    prize:"전국해금경연 우수상", record:"국악과 합격 4명",
+    target:["입시","취미"], price:"회당 9만원(60분)", priceNum:9,
+    region:"강남·송파", mode:["스튜디오"], trial:true, note:"입시·취미 병행. 창작·시나위 지도." },
+  { inst:"타악", detail:"장구", name:"정○○", edu:"중앙대 국악과 졸",
+    rating:4.7, rcount:9, matches:14, years:4, fastReply:true, verified:false,
+    prize:"", record:"방과후·동아리 지도 다수",
+    target:["취미","입시"], price:"회당 5만원(60분)", priceNum:5,
+    region:"노원·강북", mode:["출강","스튜디오"], trial:true, note:"사물놀이·풍물·설장구. 단체 출강 가능." },
+  { inst:"관악", detail:"피리", name:"강○○", edu:"부산대 국악과 졸",
+    rating:4.9, rcount:12, matches:19, years:7, fastReply:false, verified:true,
+    prize:"전국피리경연 입상", record:"국악과 합격 3명",
+    target:["입시","전공심화"], price:"회당 8만원(60분)", priceNum:8,
+    region:"수원·용인", mode:["출강"], trial:true, note:"향피리·세피리·태평소. 대취타 지도." },
+  { inst:"현악", detail:"거문고", name:"윤○○", edu:"한예종 졸 · 전문사",
+    rating:5.0, rcount:11, matches:16, years:8, fastReply:true, verified:true,
+    prize:"온나라국악경연 종합대상", record:"전공 심화 지도 6명",
+    target:["전공심화","유학준비"], price:"회당 11만원(90분)", priceNum:11,
+    region:"서초", mode:["스튜디오","온라인"], trial:false, note:"정악·산조·창작. 대학원·연주자 과정 지도." },
+  { inst:"타악", detail:"북(고법)", name:"한○○", edu:"우석대 국악과 졸",
+    rating:4.8, rcount:26, matches:47, years:5, fastReply:true, verified:false,
+    prize:"", record:"판소리 반주(고법) 경력 5년",
+    target:["취미"], price:"회당 5만원(60분)", priceNum:5,
+    region:"온라인", mode:["온라인"], trial:true, note:"판소리 고법·장단 코칭. 비대면 가능." },
+];
+const REQUESTS = [
+  { inst:"현악", detail:"가야금", title:"국악고 입시 준비 중3, 주 2회 선생님 찾습니다", region:"분당", budget:"회당 10~15만", mode:"스튜디오 방문 가능", note:"산조 진행 중. 11월 경연 목표." },
+  { inst:"성악", detail:"판소리", title:"국악과 편입 준비 소리 레슨 (고수 포함 희망)", region:"서울 전역", budget:"회당 10만 이하", mode:"출강 희망", note:"직장인이라 평일 저녁·주말만 가능합니다." },
+  { inst:"관악", detail:"단소", title:"성인 취미 단소 기초부터", region:"일산", budget:"회당 4~6만", mode:"출강/스튜디오 무관", note:"악기 구입 전이라 상담부터 부탁드려요." },
+  { inst:"타악", detail:"장구", title:"초5 사물놀이 장구 방과후 대체 강사", region:"강남", budget:"회당 5~8만", mode:"스튜디오", note:"기초 장단 진행 중." },
+];
+
+// 악기는 세부 단위로 — 가야금 선생님이 거문고를 가르칠 수는 없으니까
+const INST_GROUPS=[
+  ["현악(줄)",["가야금","거문고","아쟁","해금","양금"]],
+  ["관악(불)",["대금","피리","소금","단소","태평소","생황"]],
+  ["타악(치)",["장구","북(고법)","꽹과리","사물놀이"]],
+  ["성악(소리)",["판소리","정가","민요"]],
+];
+const LEVELS=["취미","입시","전공심화","유학준비"];
+const MODES=["스튜디오","출강","온라인"];
+const CONDS=["시범레슨 가능"];
+const st={tab:"teacher",inst:new Set(),level:new Set(),mode:new Set(),cond:new Set(),q:"",sort:"default"};
+const $=s=>document.querySelector(s);
+
+function chips(id,items,set){const el=$(id);el.innerHTML=items.map(v=>`<button class="chip${set.has(v)?" on":""}" data-v="${v}">${v}</button>`).join("");
+  el.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{const v=c.dataset.v;set.has(v)?set.delete(v):set.add(v);render();}));}
+
+function instChips(){
+  const el=$("#f-inst");
+  el.innerHTML=INST_GROUPS.map(([g,list])=>`
+    <div class="inst-group"><span class="inst-group-label">${g}</span>
+      ${list.map(v=>`<button class="chip${st.inst.has(v)?" on":""}" data-v="${v}">${v}</button>`).join("")}
+    </div>`).join("");
+  el.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{const v=c.dataset.v;st.inst.has(v)?st.inst.delete(v):st.inst.add(v);render();}));
+}
+// 세부 악기 매칭: "피아노(반주)"는 "피아노" 칩에 매칭
+const instMatch=(detail,set)=>[...set].some(v=>detail.startsWith(v)||detail===v);
+
+function render(){
+  instChips();chips("#f-level",LEVELS,st.level);chips("#f-mode",MODES,st.mode);chips("#f-cond",CONDS,st.cond);
+  $("#tab-teacher").classList.toggle("active",st.tab==="teacher");
+  $("#tab-request").classList.toggle("active",st.tab==="request");
+  const q=st.q.toLowerCase();
+  let html="";
+  if(st.tab==="teacher"){
+    const list=TEACHERS.filter(t=>{
+      if(st.inst.size&&!instMatch(t.detail,st.inst))return false;
+      if(st.level.size&&![...st.level].some(l=>t.target.includes(l)))return false;
+      if(st.mode.size&&![...st.mode].some(m=>t.mode.includes(m)))return false;
+      if(st.cond.has("시범레슨 가능")&&!t.trial)return false;
+      if(q&&!`${t.detail} ${t.edu} ${t.region} ${t.note}`.toLowerCase().includes(q))return false;
+      return true;
+    });
+    if(st.sort==="priceAsc")list.sort((a,b)=>a.priceNum-b.priceNum);
+    else if(st.sort==="priceDesc")list.sort((a,b)=>b.priceNum-a.priceNum);
+    else if(st.sort==="reviews")list.sort((a,b)=>b.rcount-a.rcount);
+    else if(st.sort==="matches")list.sort((a,b)=>b.matches-a.matches);
+    $("#result-count").innerHTML=`선생님 <strong>${list.length}</strong>명 · ${{default:"최근 등록순",priceAsc:"가격 낮은순",priceDesc:"가격 높은순"}[st.sort]}`;
+    html=list.map(t=>`
+      <article class="job-card">
+        <div class="top-row">
+          <span class="tag inst">${t.detail}</span>
+          ${t.target.map(x=>`<span class="tag cat">${x}</span>`).join("")}
+          ${t.trial?`<span class="tag ok">시범레슨</span>`:""}
+          ${t.fastReply?`<span class="tag ok">⚡ 로켓응답</span>`:""}
+          ${t.verified?`<span class="tag inst">🎓 학력인증</span>`:""}
+          ${t.mode.map(m=>`<span class="tag pos">${m}</span>`).join("")}
+        </div>
+        <h3>${t.detail} · ${t.name} 선생님 <span style="font-weight:400;font-size:0.85rem;color:var(--ink-soft)">${t.region}</span></h3>
+        <div style="font-size:0.82rem;color:var(--ink);margin-top:2px">⭐ <b>${t.rating}</b> (리뷰 ${t.rcount}) · 매칭 <b>${t.matches}회</b> · 경력 ${t.years}년</div>
+        <div class="cred"><b>${t.edu}</b>${t.prize?`<br>🏆 ${t.prize}`:""}<br><span style="font-size:0.76rem;opacity:0.85">지도 실적: ${t.record}</span></div>
+        <div class="price-line">${t.price}</div>
+        <div class="source-line"><span>${t.note}</span></div>
+      </article>`).join("");
+  } else {
+    const list=REQUESTS.filter(r=>{
+      if(st.inst.size&&!instMatch(r.detail,st.inst))return false;
+      if(q&&!`${r.detail} ${r.title} ${r.region}`.toLowerCase().includes(q))return false;
+      return true;
+    });
+    $("#result-count").innerHTML=`레슨 요청 <strong>${list.length}</strong>건`;
+    html=list.map(r=>`
+      <article class="job-card">
+        <div class="top-row"><span class="tag inst">${r.detail}</span><span class="tag cat">학생 요청</span></div>
+        <h3>${r.title}</h3>
+        <div class="meta"><span>${r.region}</span><span class="pay">${r.budget}</span><span>${r.mode}</span></div>
+        <div class="source-line"><span>${r.note}</span></div>
+      </article>`).join("");
+  }
+  $("#list").innerHTML=html||`<div class="empty">조건에 맞는 결과가 없습니다.</div>`;
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  render();
+  $("#tab-teacher").addEventListener("click",()=>{st.tab="teacher";render();});
+  $("#tab-request").addEventListener("click",()=>{st.tab="request";render();});
+  $("#search-input").addEventListener("input",e=>{st.q=e.target.value.trim();render();});
+  $("#sort-sel").addEventListener("change",e=>{st.sort=e.target.value;render();});
+  // 레슨 요청서
+  const D2G={}; INST_GROUPS.forEach(([g,list])=>list.forEach(d=>D2G[d]=g));
+  $("#q-inst").innerHTML=INST_GROUPS.map(([g,list])=>
+    `<optgroup label="${g}">${list.map(d=>`<option value="${d}">${d}</option>`).join("")}</optgroup>`).join("");
+  const reqModal=$("#request-modal");
+  $("#btn-request").addEventListener("click",()=>reqModal.classList.add("open"));
+  reqModal.addEventListener("click",e=>{if(e.target===reqModal)reqModal.classList.remove("open");});
+  reqModal.querySelector(".modal-close").addEventListener("click",()=>reqModal.classList.remove("open"));
+  $("#request-form").addEventListener("submit",e=>{
+    e.preventDefault();
+    const f=e.target;
+    const detail=f.elements["q-inst"].value;
+    REQUESTS.unshift({
+      inst:D2G[detail]||"기타", detail,
+      title:`${f.elements["q-level"].value} ${detail} 레슨 선생님 찾습니다 (${f.elements["q-freq"].value})`,
+      region:f.elements["q-region"].value,
+      budget:f.elements["q-budget"].value?`회당 ${f.elements["q-budget"].value}`:"예산 협의",
+      mode:`${f.elements["q-mode"].value}${f.elements["q-time"].value?` · ${f.elements["q-time"].value}`:""}`,
+      note:f.elements["q-note"].value
+    });
+    f.reset(); reqModal.classList.remove("open");
+    st.tab="request"; render();
+  });
+  $("#filter-reset").addEventListener("click",()=>{st.inst.clear();st.level.clear();st.mode.clear();st.cond.clear();st.q="";st.sort="default";$("#sort-sel").value="default";$("#search-input").value="";render();});
+});
+</script>
+</body>
+</html>

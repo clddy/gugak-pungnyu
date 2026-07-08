@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구인구직 — 풍류</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Cormorant:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">풍류<span class="accent">.</span><span class="beta">BETA</span></a>
+    <nav class="main-nav">
+      <a href="jobs.html" class="active">구인구직</a>
+      <a href="practice.html">연습실</a>
+      <a href="lessons.html">과외</a>
+      <a href="market.html">중고거래</a>
+      <a href="#" onclick="alert('커뮤니티는 추후 오픈 예정입니다.'); return false;">커뮤니티 <span class="soon">예정</span></a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-ghost" onclick="alert('로그인은 프로토타입에서 제공되지 않습니다.')">로그인</button>
+    </div>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="container">
+    <h1>구인구직</h1>
+    <p class="desc">국악단 <b>공식 채용공고</b>(매일 자동 수집)와 개인·팀의 <b>소규모 구인·구직</b>을 한곳에서. 출처 태그로 구분됩니다.</p>
+    <div class="tabs">
+      <button class="tab active" id="tab-전체">전체</button>
+      <button class="tab" id="tab-구인">구인</button>
+      <button class="tab" id="tab-구직">구직</button>
+    </div>
+  </div>
+</div>
+
+<div class="container board-layout">
+  <aside class="filters">
+    <button class="filter-reset filter-reset-top" id="filter-reset">필터 초기화 ↺</button>
+    <div class="filter-group">
+      <h4>구분</h4>
+      <div class="filter-options" id="filter-tier"></div>
+    </div>
+    <div class="filter-group">
+      <h4>유형</h4>
+      <div class="filter-options" id="filter-band"></div>
+    </div>
+    <div class="filter-group">
+      <details open>
+        <summary class="filter-summary">악기 (접기/펼치기)</summary>
+        <div id="filter-inst"></div>
+      </details>
+    </div>
+    <div class="filter-group">
+      <h4>지역</h4>
+      <div class="filter-options" id="filter-region"></div>
+    </div>
+    <div class="filter-group">
+      <h4>상태</h4>
+      <div class="filter-options" id="filter-status"></div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="crawl-note">
+      <span class="dot"></span>
+      <span id="crawl-meta"></span>
+    </div>
+    <div class="board-toolbar">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="제목, 악기, 기관명으로 검색">
+      </div>
+      <select id="sort-sel" class="sort-sel">
+        <option value="deadline">모집 마감순</option>
+        <option value="concert">연주 날짜순</option>
+        <option value="pay">페이순</option>
+      </select>
+      <button class="btn-primary" id="btn-write">＋ 글 올리기</button>
+    </div>
+    <div class="result-count" id="result-count"></div>
+    <div class="job-list" id="job-list"></div>
+  </main>
+</div>
+
+<!-- 소규모 글 상세 모달 -->
+<div class="modal-backdrop" id="detail-modal">
+  <div class="modal">
+    <button class="modal-close">✕</button>
+    <div class="top-row" id="detail-tags"></div>
+    <h2 id="detail-title"></h2>
+    <dl class="detail-meta" id="detail-meta"></dl>
+    <div class="body-text" id="detail-body"></div>
+    <div class="modal-actions">
+      <button class="btn-outline" onclick="document.getElementById('detail-modal').classList.remove('open')">닫기</button>
+      <button class="btn-primary" id="detail-action">지원하기 / 연락하기</button>
+    </div>
+  </div>
+</div>
+
+<!-- 글쓰기 모달 -->
+<div class="modal-backdrop" id="write-modal">
+  <div class="modal">
+    <button class="modal-close">✕</button>
+    <h2>글 올리기 <span style="font-size:0.75rem;color:var(--ink-soft);font-weight:400">(소규모 구인·구직)</span></h2>
+    <form class="form-grid" id="write-form">
+      <div class="form-field">
+        <label>구분</label>
+        <div class="radio-row">
+          <label><input type="radio" name="w-type" value="offer" checked> 구인 (사람을 찾습니다)</label>
+          <label><input type="radio" name="w-type" value="seek"> 구직 (자리를 찾습니다)</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>구분</label>
+          <select name="w-tier" required>
+            <option value="프로">프로 (직업 악단·공연)</option>
+            <option value="전공·입시">전공·입시 (유스·입시레슨)</option>
+            <option value="교육·취미">교육·취미 (방과후·취미레슨)</option>
+            <option value="오브리">오브리 (교회·웨딩·행사)</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>일시 (연주·근무일)</label>
+          <input type="text" name="w-when" placeholder="예: 7/21~23 리허설, 7/24 공연">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>분야</label>
+          <select name="w-cat" required>
+            <option value="객원/대타">객원/대타</option>
+            <option value="단원모집">단원모집</option>
+            <option value="반주">반주</option>
+            <option value="행사연주">행사연주</option>
+            <option value="강사/레슨">강사/레슨</option>
+            <option value="지휘/음악감독">지휘/음악감독</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>악기군</label>
+          <select name="w-inst" required>
+            <option value="현악">현악</option>
+            <option value="목관">목관</option>
+            <option value="금관">금관</option>
+            <option value="타악">타악</option>
+            <option value="건반">건반</option>
+            <option value="성악">성악</option>
+            <option value="지휘">지휘</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>세부 악기 (예: 바이올린)</label>
+          <input type="text" name="w-instDetail" placeholder="바이올린">
+        </div>
+        <div class="form-field">
+          <label>지역</label>
+          <select name="w-region" required>
+            <option value="서울">서울</option>
+            <option value="경기">경기</option>
+            <option value="인천">인천</option>
+            <option value="대전">대전</option>
+            <option value="대구">대구</option>
+            <option value="부산">부산</option>
+            <option value="기타">기타</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>제목</label>
+        <input type="text" name="w-title" required placeholder="예: 정기연주회 비올라 객원 1명 모십니다">
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>모집 인원</label>
+          <input type="text" name="w-personnel" placeholder="예: 제2바이올린 2명">
+        </div>
+        <div class="form-field">
+          <label>자격</label>
+          <input type="text" name="w-qual" placeholder="예: 음대 졸업 이상">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>기관/팀명 또는 이름</label>
+          <input type="text" name="w-org" required placeholder="○○앙상블">
+        </div>
+        <div class="form-field">
+          <label>보수</label>
+          <input type="text" name="w-pay" placeholder="회당 15만원 / 협의">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>마감일</label>
+          <input type="date" name="w-deadline">
+        </div>
+        <div class="form-field" style="display:flex;align-items:flex-end;padding-bottom:6px">
+          <label style="display:flex;align-items:center;gap:6px;margin:0;font-weight:400">
+            <input type="checkbox" name="w-urgent"> 급구로 표시
+          </label>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>프로그램 <span style="font-weight:400;color:var(--ink-soft)">(객원 모집 시 기재 권장)</span></label>
+        <input type="text" name="w-program" placeholder="예: 브람스 교향곡 4번, 시벨리우스 협주곡">
+      </div>
+      <div class="form-field">
+        <label>상세 내용</label>
+        <textarea name="w-body" required placeholder="일정, 연습 횟수, 자격 요건, 연락 방법 등을 적어주세요."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-outline" onclick="document.getElementById('write-modal').classList.remove('open')">취소</button>
+        <button type="submit" class="btn-primary">등록하기</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <span class="logo serif">풍류<span class="accent">.</span></span><br>
+    국악인을 위한 플랫폼 · 프로토타입 v0.15
+  </div>
+</footer>
+
+<a class="feedback-fab" href="mailto:ohmjin3141@naver.com?subject=%ED%92%8D%EB%A5%98%20%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%20%ED%94%BC%EB%93%9C%EB%B0%B1">피드백 보내기</a>
+
+<script>document.write('<scr'+'ipt src="data/official-data.js?t='+Math.floor(Date.now()/600000)+'"></scr'+'ipt>');</script>
+<script src="js/data.js"></script>
+<script src="js/jobs.js"></script>
+<script>
+  // 수집 현황 배너
+  (function () {
+    const D = window.CRAWLED;
+    const el = document.getElementById("crawl-meta");
+    if (D) {
+      el.innerHTML = `공식 공고 마지막 수집: <strong>${D.collectedAt}</strong> · 기관 ${D.okCount}/${D.sourceCount} 응답 · 매일 18시 자동 수집`;
+    } else {
+      el.textContent = "공식 공고 데이터를 불러오지 못했습니다.";
+    }
+  })();
+</script>
+</body>
+</html>

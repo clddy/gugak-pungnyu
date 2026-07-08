@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>풍류 — 국악인의 무대와 일자리</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Cormorant:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="css/style.css?v=5">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">풍류<span class="accent">.</span><span class="beta">BETA</span></a>
+    <nav class="main-nav">
+      <a href="jobs.html">구인구직</a>
+      <a href="practice.html">연습실</a>
+      <a href="lessons.html">과외</a>
+      <a href="market.html">중고거래</a>
+      <a href="#" onclick="alert('커뮤니티는 추후 오픈 예정입니다.'); return false;">커뮤니티 <span class="soon">예정</span></a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-ghost" onclick="alert('로그인은 프로토타입에서 제공되지 않습니다.')">로그인</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">국악인을 위한 플랫폼</p>
+    <h1 class="serif">흩어진 가락을<br>한 <span class="accent">풍류</span>방에</h1>
+    <p>국악관현악단 객원부터 판소리 반주, 행사·의례 연주, 레슨까지 —
+       단톡방과 지인 소개로만 돌던 기회를 한곳에 모았습니다.</p>
+    <div class="hero-cta">
+      <a href="jobs.html"><button class="btn-primary">구인구직 보러가기</button></a>
+      <a href="jobs.html"><button class="btn-ghost">공고 올리기</button></a>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="container">
+    <h2 class="section-title">서비스</h2>
+    <p class="section-sub">구인구직을 시작으로 국악 생태계에 필요한 것들을 하나씩 만들어갑니다.</p>
+    <div class="card-grid">
+      <a href="jobs.html" class="service-card">
+        <span class="badge-live">운영중</span>
+        <span class="icon">01</span>
+        <h3>구인구직</h3>
+        <p>국악단 공식 채용공고(자동 수집)부터 객원·반주·행사 소규모 구인까지 한곳에서.</p>
+      </a>
+      <a href="practice.html" class="service-card">
+        <span class="badge-live">베타</span>
+        <span class="icon">02</span>
+        <h3>연습실 매칭</h3>
+        <p>방음·좌식·타악 가능·남은 자리·월세까지 비교하고 고릅니다.</p>
+      </a>
+      <a href="lessons.html" class="service-card">
+        <span class="badge-live">베타</span>
+        <span class="icon">03</span>
+        <h3>과외 매칭</h3>
+        <p>학력·입상 경력으로 찾는 선생님, 조건으로 올리는 레슨 요청.</p>
+      </a>
+      <a href="market.html" class="service-card">
+        <span class="badge-live">베타</span>
+        <span class="icon">04</span>
+        <h3>중고거래</h3>
+        <p>제작자·상태·시연 — 신뢰 장치를 갖춘 국악기 거래.</p>
+      </a>
+    </div>
+    <a href="jobs.html" class="crawl-banner">
+      <div>
+        <h3>국악단 공식 채용공고 자동 수집</h3>
+        <p>전국 시립국악관현악단·창극단·국악원의 모집 공고를 매일 자동 수집해 구인구직 게시판에 [공식] 태그로 정리합니다.</p>
+      </div>
+      <button class="btn-outline">공고 보러가기 →</button>
+    </a>
+  </div>
+</section>
+
+<section class="recent">
+  <div class="container">
+    <h2 class="section-title">최신 공고</h2>
+    <p class="section-sub">지금 올라온 구인·구직 글입니다.</p>
+    <div class="recent-list" id="recent-list"></div>
+    <div class="recent-more">
+      <a href="jobs.html"><button class="btn-outline">전체 공고 보기 →</button></a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <span class="logo serif">풍류<span class="accent">.</span></span><br>
+    국악인을 위한 플랫폼 · 프로토타입 v0.15
+  </div>
+</footer>
+
+<script>document.write('<scr'+'ipt src="data/official-data.js?t='+Math.floor(Date.now()/600000)+'"></scr'+'ipt>');</script>
+<script src="js/data.js"></script>
+<script>
+  // 홈: 마감 임박 공식 공고 2건 + 최신 소규모 글 2건 프리뷰
+  const _today = new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10); // KST
+  const _official = ((window.CRAWLED && window.CRAWLED.items) || [])
+    .filter(j => j.deadline && j.deadline >= _today)
+    .sort((a, b) => a.deadline.localeCompare(b.deadline))
+    .slice(0, 2)
+    .map(j => ({
+      type: "offer", cat: "공식 채용", instDetail: (j.instDetails && j.instDetails[0]) || j.inst,
+      urgent: false, title: j.title, org: j.org, region: j.region, pay: `마감 ${j.deadline}`
+    }));
+  const recent = [..._official, ...[...JOBS].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4 - _official.length)];
+  document.getElementById("recent-list").innerHTML = recent.map(j => `
+    <a href="jobs.html" class="job-card" style="display:block">
+      <div class="top-row">
+        <span class="tag ${j.type === "offer" ? "type-offer" : "type-seek"}">${j.type === "offer" ? "구인" : "구직"}</span>
+        <span class="tag cat">${j.cat}</span>
+        <span class="tag inst">${j.instDetail}</span>
+        ${j.urgent ? `<span class="tag urgent">급구</span>` : ""}
+      </div>
+      <h3>${j.title}</h3>
+      <div class="meta">
+        <span>${j.org}</span>
+        <span>${j.region}</span>
+        <span class="pay">${j.pay}</span>
+      </div>
+    </a>`).join("");
+</script>
+<a class="feedback-fab" href="mailto:ohmjin3141@naver.com?subject=%ED%92%8D%EB%A5%98%20%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85%20%ED%94%BC%EB%93%9C%EB%B0%B1">피드백 보내기</a>
+</body>
+</html>

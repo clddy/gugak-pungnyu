@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>중고거래 — 풍류</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Cormorant:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <style>
+    .tag.ok { background:#e7f2ec; color:var(--green); }
+    .tag.warn { background:#fbe9e4; color:var(--red); }
+    .price-line { font-size:1.1rem; color:var(--gold); font-weight:700; margin-top:4px; }
+    .safety-note { background:#fbf3e6; border:1px solid var(--gold-light); border-radius:8px; padding:12px 16px; font-size:0.82rem; color:#6b5c3e; margin-bottom:14px; line-height:1.6; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">풍류<span class="accent">.</span><span class="beta">BETA</span></a>
+    <nav class="main-nav">
+      <a href="jobs.html">구인구직</a>
+      <a href="practice.html">연습실</a>
+      <a href="lessons.html">과외</a>
+      <a href="market.html" class="active">중고거래</a>
+      <a href="#" onclick="alert('커뮤니티는 추후 오픈 예정입니다.'); return false;">커뮤니티 <span class="soon">예정</span></a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-ghost" onclick="alert('로그인은 프로토타입에서 제공되지 않습니다.')">로그인</button>
+    </div>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="container">
+    <h1>중고거래</h1>
+    <p class="desc">제작자·상태·시연 — 국악기는 통·가죽·음정이 전부라 직접 확인이 관건입니다. (목데이터 프로토타입)</p>
+    <div class="tabs"><button class="tab active">악기·용품 장터</button></div>
+  </div>
+</div>
+
+<div class="container board-layout">
+  <aside class="filters">
+    <button class="filter-reset filter-reset-top" id="filter-reset">필터 초기화 ↺</button>
+    <div class="filter-group"><h4>분류</h4><div class="filter-options" id="f-cat"></div></div>
+    <div class="filter-group"><h4>지역</h4><div class="filter-options" id="f-region"></div></div>
+    <div class="filter-group"><h4>거래 방식</h4><div class="filter-options" id="f-deal"></div></div>
+    <div class="filter-group"><h4>가격대</h4><div class="filter-options" id="f-price"></div></div>
+    <div class="filter-group"><h4>상태 등급</h4><div class="filter-options" id="f-grade"></div></div>
+    <div class="filter-group"><h4>판매자</h4><div class="filter-options" id="f-seller"></div></div>
+    <div class="filter-group"><h4>신뢰 조건</h4><div class="filter-options" id="f-trust"></div></div>
+  </aside>
+  <main>
+    <div class="safety-note">
+      <b>안전거래 안내</b> — 국악기는 택배보다 <b>대면 거래가 기본</b>입니다. 통·가죽·음정은 직접 소리 내봐야 압니다(반드시 시연). 종로 <b>낙원상가</b> 국악기상 밀집 권역에서는 <b>위탁·동반 확인</b>이 활발합니다. 제작자 불명 고가 악기, 선입금 유도는 주의하세요.
+    </div>
+    <div class="board-toolbar">
+      <div class="search-box"><input type="text" id="search-input" placeholder="악기, 제작자, 지역으로 검색"></div>
+    </div>
+    <div class="result-count" id="result-count"></div>
+    <div class="job-list" id="list"></div>
+  </main>
+</div>
+
+<!-- 매물 상세 모달 (뮬/Reverb 벤치마킹: 등급 기준·구성품·판매자 신뢰) -->
+<div class="modal-backdrop" id="market-modal">
+  <div class="modal">
+    <button class="modal-close">✕</button>
+    <div class="top-row" id="mk-tags"></div>
+    <h2 id="mk-title"></h2>
+    <div style="height:140px;border-radius:8px;margin-bottom:12px;background:var(--wash);display:flex;align-items:center;justify-content:center;font-size:2rem"></div>
+    <div class="price-line" id="mk-price" style="margin-bottom:10px"></div>
+    <dl class="detail-meta" id="mk-meta"></dl>
+    <h3 style="font-size:0.95rem;color:var(--navy);margin:14px 0 6px">판매자 설명</h3>
+    <div class="body-text" id="mk-note" style="margin-bottom:14px"></div>
+    <div style="font-size:0.76rem;color:var(--ink-soft);background:var(--ivory);border-radius:8px;padding:10px 14px;margin-bottom:16px">
+      등급 기준 — <b>S급</b> 신품급·풀구성 / <b>A급</b> 생활 기스·기능 완전 / <b>B급</b> 사용감·수리 이력. 등급은 판매자 신고 기준이며, 고가 악기는 반드시 시연·동반 감정 후 결정하세요.
+    </div>
+    <div class="modal-actions">
+      <button class="btn-outline" onclick="alert('프로토타입: 찜 기능은 실서비스에서 제공됩니다.')">♥ 찜하기</button>
+      <button class="btn-primary" onclick="alert('프로토타입: 문의는 실서비스에서 공개 댓글/채팅으로 제공됩니다.')">문의하기</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container"><span class="logo serif">풍류<span class="accent">.</span></span><br>국악인을 위한 플랫폼 · 프로토타입 v0.15</div>
+</footer>
+
+<a class="feedback-fab" href="mailto:ohmjin3141@naver.com?subject=%ED%92%8D%EB%A5%98%20%EC%A4%91%EA%B3%A0%EA%B1%B0%EB%9E%98%20%ED%94%BC%EB%93%9C%EB%B0%B1">피드백 보내기</a>
+
+<script>
+// 벤치마킹 반영: 상태등급(Reverb식 표준)·판매상태(뮬의 수동 관행 정식화)·판매자 신뢰·가격제안
+// 등급 기준 — S급: 신품급·풀구성 / A급: 생활기스·기능 완전 / B급: 사용감·수리이력 있음
+const ITEMS = [
+  { cat:"악기", title:"25현 가야금 (명장 ○○○ 제작, 오동 통)", price:420, region:"종로·낙원상가",
+    status:"판매중", grade:"A", includes:"연주용 케이스·안족·조율기", offer:true, seller:{type:"개인", trades:7}, wish:24, views:412,
+    cert:"제작자 확인서", demo:"낙원상가 국악기상 시연", deal:"위탁(국악기상 경유) · 직거래 병행", repair:"현 전체 교체(2024)",
+    sound:true, note:"창작곡용 25현. 소리 밝고 음정 안정적. 동반 확인 환영." },
+  { cat:"악기", title:"거문고 (정악용, 오동 상판)", price:180, region:"강남",
+    status:"예약중", grade:"B", includes:"소프트 케이스·술대", offer:true, seller:{type:"개인", trades:3}, wish:31, views:689,
+    cert:"제작자 미상(구매 시 동행 확인 협조)", demo:"국악기상 시연 예약제", deal:"위탁(국악기상 경유)", repair:"괘 정비(2022)",
+    sound:true, note:"국악과 졸업 후 정리합니다. 정악 소리 좋음. 네고 소폭." },
+  { cat:"악기", title:"쌍골죽 대금 (정악·산조 겸용)", price:95, region:"일산·파주",
+    status:"판매중", grade:"S", includes:"대금 케이스·청·청가리개", offer:false, seller:{type:"개인", trades:12}, wish:18, views:305,
+    cert:"제작자 확인서", demo:"직거래 시연 환영", deal:"직거래", repair:"청공 정비(2025.11)",
+    sound:false, note:"입시 끝나서 판매. 음정 정확, 저취 잘 남." },
+  { cat:"활", title:"해금 활 · 산조 아쟁 활 세트", price:22, region:"종로·낙원상가",
+    status:"판매중", grade:"A", includes:"활집", offer:true, seller:{type:"악기상·공방", trades:128}, wish:15, views:233,
+    cert:"공방 제작", demo:"시연 가능(본인 악기 지참)", deal:"위탁(국악기상 경유)", repair:"말총 교체 최근",
+    sound:false, note:"장력 좋은 연주용. 해금·아쟁 겸용." },
+  { cat:"악기", title:"장구 (통가죽, 궁편·채편 새 가죽)", price:38, region:"수원·용인",
+    status:"판매중", grade:"A", includes:"장구 가방·궁굴채·열채", offer:true, seller:{type:"개인", trades:5}, wish:9, views:187,
+    cert:"", demo:"직거래 시연 가능", deal:"직거래 · 안전결제 가능", repair:"양편 가죽 교체(2026.3)",
+    sound:true, note:"사물놀이·반주 겸용. 소리 크고 울림 좋음." },
+  { cat:"케이스", title:"가야금 하드 케이스 (25현용, 바퀴)", price:9, region:"신촌·마포",
+    status:"판매완료", grade:"B", includes:"어깨끈", offer:false, seller:{type:"개인", trades:9}, wish:6, views:142,
+    cert:"", demo:"", deal:"직거래 · 택배 가능", repair:"외관 사용감 있음, 잠금 정상",
+    sound:false, note:"케이스 교체로 판매. 바퀴·잠금 정상." },
+  { cat:"악보·기타", title:"정간보 산조 악보 모음 (가야금·거문고·대금)", price:5, region:"온라인·택배",
+    status:"판매중", grade:"S", includes:"전 3권", offer:false, seller:{type:"개인", trades:22}, wish:3, views:88,
+    cert:"", demo:"", deal:"택배 · 안전결제", repair:"필기 없음",
+    sound:false, note:"산조 한 바탕 정간보. 필기 없는 새 책." },
+  { cat:"악기", title:"소리북 (판소리 고법용, 소가죽)", price:28, region:"노원·강북",
+    status:"판매중", grade:"B", includes:"북채·받침", offer:true, seller:{type:"악기상·공방", trades:34}, wish:11, views:264,
+    cert:"", demo:"현장 시연 가능", deal:"직거래(운송비 구매자 부담)", repair:"가죽 상태 양호(2026.5)",
+    sound:true, note:"고법용 소리북. 소리 깊고 통 울림 좋음." },
+];
+
+const CATS=["악기","활","케이스","악보·기타"];
+const REGIONS=["종로·낙원상가","강남","신촌·마포","노원·강북","일산·파주","수원·용인","온라인·택배"];
+const DEALS=["대면 직거래","위탁(악기상)","택배 가능"];
+const PRICES=["100만 이하","100~1000만","1000만 이상"];
+const GRADES=["S급","A급","B급"];
+const SELLERS=["개인","악기상·공방"];
+const TRUSTS=["감정서·보증서","시연 가능","안전결제","가격제안 가능","판매중만"];
+const st={cat:new Set(),region:new Set(),deal:new Set(),price:new Set(),grade:new Set(),seller:new Set(),trust:new Set(),q:""};
+const $=s=>document.querySelector(s);
+
+function chips(id,items,set){const el=$(id);el.innerHTML=items.map(v=>`<button class="chip${set.has(v)?" on":""}" data-v="${v}">${v}</button>`).join("");
+  el.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{const v=c.dataset.v;set.has(v)?set.delete(v):set.add(v);render();}));}
+
+function fmtPrice(p){
+  if(p>=10000){const eok=Math.floor(p/10000),man=p%10000;return `${eok}억${man?` ${man.toLocaleString()}만원`:""}`;}
+  return `${p.toLocaleString()}만원`;
+}
+
+function render(){
+  chips("#f-cat",CATS,st.cat);chips("#f-region",REGIONS,st.region);chips("#f-deal",DEALS,st.deal);
+  chips("#f-price",PRICES,st.price);chips("#f-grade",GRADES,st.grade);chips("#f-seller",SELLERS,st.seller);
+  chips("#f-trust",TRUSTS,st.trust);
+  const q=st.q.toLowerCase();
+  const list=ITEMS.filter(i=>{
+    if(st.cat.size&&!st.cat.has(i.cat))return false;
+    if(st.region.size&&!st.region.has(i.region))return false;
+    if(st.grade.size&&!st.grade.has(i.grade+"급"))return false;
+    if(st.seller.size&&!st.seller.has(i.seller.type))return false;
+    if(st.trust.has("판매중만")&&i.status!=="판매중")return false;
+    if(st.trust.has("가격제안 가능")&&!i.offer)return false;
+    if(st.deal.size){
+      const m=[...st.deal].some(v=>
+        v==="대면 직거래"&&i.deal.includes("직거래")||
+        v==="위탁(악기상)"&&i.deal.includes("위탁")||
+        v==="택배 가능"&&i.deal.includes("택배"));
+      if(!m)return false;
+    }
+    if(st.price.size){const m=[...st.price].some(v=>v==="100만 이하"&&i.price<=100||v==="100~1000만"&&i.price>100&&i.price<=1000||v==="1000만 이상"&&i.price>1000);if(!m)return false;}
+    if(st.trust.has("감정서·보증서")&&!i.cert)return false;
+    if(st.trust.has("시연 가능")&&!i.demo)return false;
+    if(st.trust.has("안전결제")&&!i.deal.includes("안전결제"))return false;
+    if(q&&!`${i.title} ${i.region} ${i.note}`.toLowerCase().includes(q))return false;
+    return true;
+  });
+  $("#result-count").innerHTML=`총 <strong>${list.length}</strong>건`;
+  $("#list").innerHTML=list.length?list.map((i,idx)=>`
+    <article class="job-card${i.status==="판매완료"?" closed":""}" data-i="${idx}">
+      <div class="top-row">
+        <span class="tag ${i.status==="판매중"?"ok":i.status==="예약중"?"warn":"dd-closed"}">${i.status}</span>
+        <span class="tag pos">${i.grade}급</span>
+        <span class="tag cat">${i.cat}</span>
+        ${i.cert?`<span class="tag ok">📜 ${i.cert}</span>`:`<span class="tag warn">감정서 없음</span>`}
+        ${i.demo?`<span class="tag inst">시연 가능</span>`:""}
+        ${i.offer?`<span class="tag inst">가격제안</span>`:""}
+        ${i.sound?`<span class="tag pos">🔊 샘플사운드</span>`:""}
+      </div>
+      <h3>${i.title}</h3>
+      <div class="price-line">${fmtPrice(i.price)}</div>
+      <div class="meta">
+        <span>${i.region}</span><span>${i.deal}</span>
+        <span>${i.seller.type} · 거래 ${i.seller.trades}회</span>
+      </div>
+      <div class="source-line"><span>${i.note}</span><span>♥ ${i.wish} · 조회 ${i.views}</span></div>
+    </article>`).join(""):`<div class="empty">조건에 맞는 매물이 없습니다.</div>`;
+  document.querySelectorAll("#list .job-card").forEach(card=>{
+    card.addEventListener("click",()=>openItem(list[+card.dataset.i]));
+  });
+}
+
+const GRADE_DESC={S:"신품급 · 풀구성 · 결점 없음",A:"생활 기스 · 기능 완전",B:"사용감 · 수리 이력 있음"};
+function openItem(i){
+  $("#mk-tags").innerHTML=`
+    <span class="tag ${i.status==="판매중"?"ok":i.status==="예약중"?"warn":"dd-closed"}">${i.status}</span>
+    <span class="tag pos">${i.grade}급</span>
+    <span class="tag cat">${i.cat}</span>
+    ${i.cert?`<span class="tag ok">📜 ${i.cert}</span>`:`<span class="tag warn">감정서 없음</span>`}
+    ${i.sound?`<span class="tag pos">🔊 샘플사운드</span>`:""}`;
+  $("#mk-title").textContent=i.title;
+  $("#mk-price").innerHTML=`${fmtPrice(i.price)} <span class="per">${i.offer?"· 가격제안 가능":"· 정가"}</span>`;
+  $("#mk-meta").innerHTML=`
+    <dt>상태 등급</dt><dd><b>${i.grade}급</b> — ${GRADE_DESC[i.grade]}</dd>
+    <dt>구성품</dt><dd>${i.includes||"-"}</dd>
+    <dt>수리 이력</dt><dd>${i.repair||"없음"}</dd>
+    <dt>시연</dt><dd>${i.demo||"협의"}</dd>
+    <dt>거래 방식</dt><dd>${i.deal}</dd>
+    <dt>지역</dt><dd>${i.region}</dd>
+    <dt>판매자</dt><dd>${i.seller.type} · 거래 ${i.seller.trades}회</dd>
+    <dt>관심</dt><dd>♥ ${i.wish} · 조회 ${i.views}</dd>`;
+  $("#mk-note").textContent=i.note;
+  $("#market-modal").classList.add("open");
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  render();
+  $("#search-input").addEventListener("input",e=>{st.q=e.target.value.trim();render();});
+  $("#filter-reset").addEventListener("click",()=>{st.cat.clear();st.region.clear();st.deal.clear();st.price.clear();st.grade.clear();st.seller.clear();st.trust.clear();st.q="";$("#search-input").value="";render();});
+  const mk=$("#market-modal");
+  mk.addEventListener("click",e=>{if(e.target===mk)mk.classList.remove("open");});
+  mk.querySelector(".modal-close").addEventListener("click",()=>mk.classList.remove("open"));
+});
+</script>
+</body>
+</html>
