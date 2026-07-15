@@ -1,7 +1,7 @@
 {
- "collectedAt": "2026-07-08 20:20",
+ "collectedAt": "2026-07-16 07:16",
  "sourceCount": 13,
- "okCount": 13,
+ "okCount": 12,
  "sources": [
   {
    "id": "artmore",
@@ -9,7 +9,7 @@
    "layer": "A",
    "poll": "daily",
    "ok": true,
-   "raw": 1,
+   "raw": 0,
    "kept": 0
   },
   {
@@ -27,7 +27,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 16,
+   "raw": 13,
    "kept": 0
   },
   {
@@ -36,7 +36,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 2,
+   "raw": 1,
    "kept": 0
   },
   {
@@ -54,7 +54,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 23,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -72,7 +72,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 1
   },
   {
@@ -80,9 +80,8 @@
    "name": "창원문화재단",
    "layer": "B",
    "poll": "weekly",
-   "ok": true,
-   "raw": 27,
-   "kept": 0
+   "ok": false,
+   "error": "ReadTimeout: HTTPSConnectionPool(host='www.cwcf.or.kr', port=443): Read timed out. (read timeout=20)"
   },
   {
    "id": "ulsan",
@@ -90,7 +89,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 17,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -99,7 +98,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -108,7 +107,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -117,7 +116,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "raw": 0,
+   "skipped": true,
    "kept": 0
   }
  ],
@@ -140,7 +139,7 @@
    "layer": "B",
    "deadlineFrom": "attachment",
    "firstSeen": "2026-07-08",
-   "isNew": true,
+   "isNew": false,
    "extVer": 4
   },
   {
@@ -160,12 +159,12 @@
    "officialUrl": "http://www.sejonggugak.com",
    "channel": "artinfo",
    "layer": "A",
+   "deadlineFrom": "page",
    "positions": [
     "단원"
    ],
-   "deadlineFrom": "page",
    "firstSeen": "2026-07-08",
-   "isNew": true,
+   "isNew": false,
    "extVer": 4
   },
   {
@@ -189,7 +188,7 @@
    ],
    "deadlineFrom": "page+yearfix",
    "firstSeen": "2026-07-08",
-   "isNew": true,
+   "isNew": false,
    "extVer": 4
   }
  ]
