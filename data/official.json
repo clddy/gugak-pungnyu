@@ -1,7 +1,7 @@
 {
- "collectedAt": "2026-07-16 07:16",
+ "collectedAt": "2026-07-17 03:20",
  "sourceCount": 13,
- "okCount": 12,
+ "okCount": 13,
  "sources": [
   {
    "id": "artmore",
@@ -9,7 +9,7 @@
    "layer": "A",
    "poll": "daily",
    "ok": true,
-   "raw": 0,
+   "raw": 1,
    "kept": 0
   },
   {
@@ -27,7 +27,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 13,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -36,7 +36,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 1,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -45,7 +45,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 15,
+   "skipped": true,
    "kept": 1
   },
   {
@@ -54,7 +54,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 22,
    "kept": 0
   },
   {
@@ -63,7 +63,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -72,7 +72,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 1
   },
   {
@@ -80,8 +80,9 @@
    "name": "창원문화재단",
    "layer": "B",
    "poll": "weekly",
-   "ok": false,
-   "error": "ReadTimeout: HTTPSConnectionPool(host='www.cwcf.or.kr', port=443): Read timed out. (read timeout=20)"
+   "ok": true,
+   "skipped": true,
+   "kept": 0
   },
   {
    "id": "ulsan",
@@ -89,7 +90,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 18,
    "kept": 0
   },
   {
@@ -98,7 +99,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -107,7 +108,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -183,10 +184,10 @@
    "personnel": null,
    "channel": "sejongpac",
    "layer": "B",
+   "deadlineFrom": "page+yearfix",
    "positions": [
     "단원"
    ],
-   "deadlineFrom": "page+yearfix",
    "firstSeen": "2026-07-08",
    "isNew": false,
    "extVer": 4
