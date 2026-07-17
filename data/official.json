@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-07-17 03:20",
+ "collectedAt": "2026-07-18 03:20",
  "sourceCount": 13,
  "okCount": 13,
  "sources": [
@@ -54,7 +54,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 22,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -72,7 +72,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 1
   },
   {
@@ -90,7 +90,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 18,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -99,7 +99,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -108,7 +108,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -122,6 +122,31 @@
   }
  ],
  "items": [
+  {
+   "id": "1c2b1191adccd831",
+   "org": "아트인포(클래식 채용)",
+   "region": "경기",
+   "source": "artinfokorea.com",
+   "title": "세종국악관현악단, 2026년 문화예술 연수단원 추가모집 공고(창작실연 / 모집 기간 연장)",
+   "url": "https://www.artinfokorea.com/jobs/470",
+   "date": "2026-07-17",
+   "deadline": "2027-07-08",
+   "kind": "단원",
+   "tier": "프로",
+   "inst": "현악",
+   "instDetails": [],
+   "personnel": null,
+   "officialUrl": "http://www.sejonggugak.com",
+   "channel": "artinfo",
+   "layer": "A",
+   "deadlineFrom": "page+yearfix",
+   "positions": [
+    "단원"
+   ],
+   "firstSeen": "2026-07-08",
+   "isNew": false,
+   "extVer": 4
+  },
   {
    "id": "d1f250ef1909e652",
    "org": "부산문화회관(시립예술단)",
@@ -139,31 +164,6 @@
    "channel": "bscc",
    "layer": "B",
    "deadlineFrom": "attachment",
-   "firstSeen": "2026-07-08",
-   "isNew": false,
-   "extVer": 4
-  },
-  {
-   "id": "1c2b1191adccd831",
-   "org": "아트인포(클래식 채용)",
-   "region": "경기",
-   "source": "artinfokorea.com",
-   "title": "세종국악관현악단, 2026년 문화예술 연수단원 추가모집 공고(창작실연 / 모집 기간 연장)",
-   "url": "https://www.artinfokorea.com/jobs/470",
-   "date": "2026-06-17",
-   "deadline": "2026-07-08",
-   "kind": "단원",
-   "tier": "프로",
-   "inst": "현악",
-   "instDetails": [],
-   "personnel": null,
-   "officialUrl": "http://www.sejonggugak.com",
-   "channel": "artinfo",
-   "layer": "A",
-   "deadlineFrom": "page",
-   "positions": [
-    "단원"
-   ],
    "firstSeen": "2026-07-08",
    "isNew": false,
    "extVer": 4
