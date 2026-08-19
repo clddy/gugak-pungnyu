@@ -1,8 +1,8 @@
 {
- "date": "2026-08-19",
+ "date": "2026-08-20",
  "total": 21,
- "covered": 3,
- "gapCount": 18,
+ "covered": 2,
+ "gapCount": 19,
  "gaps": [
   {
    "name": "국립국악원",
@@ -32,6 +32,11 @@
   {
    "name": "국립부산국악원",
    "type": "국립",
+   "region": "부산"
+  },
+  {
+   "name": "부산시립국악관현악단",
+   "type": "시립",
    "region": "부산"
   },
   {
