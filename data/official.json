@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-08-24 03:20",
+ "collectedAt": "2026-08-25 03:20",
  "sourceCount": 13,
  "okCount": 13,
  "sources": [
@@ -19,7 +19,7 @@
    "poll": "daily",
    "ok": true,
    "raw": 10,
-   "kept": 2
+   "kept": 1
   },
   {
    "id": "incheon",
@@ -27,7 +27,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 14,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -36,7 +36,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 1,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -45,7 +45,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 15,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -54,7 +54,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 21,
    "kept": 0
   },
   {
@@ -63,7 +63,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -72,8 +72,8 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
-   "kept": 1
+   "raw": 10,
+   "kept": 0
   },
   {
    "id": "cwcf",
@@ -81,7 +81,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 34,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -90,7 +90,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 21,
    "kept": 0
   },
   {
@@ -99,7 +99,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -108,7 +108,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -123,13 +123,13 @@
  ],
  "items": [
   {
-   "id": "69339a5495da6108",
+   "id": "4bec27441bddc852",
    "org": "아트인포(클래식 채용)",
    "region": "경기",
    "source": "artinfokorea.com",
-   "title": "세종국악관현악단 세종국악관현악단, 2026년 예술기반 청년일자리(연수단원)-창작실연 모집 경기 피리 대금 해금 피리 외 2 세종국악관현악단 2026.08.18",
+   "title": "세종국악관현악단 세종국악관현악단, 2026년 예술기반 청년일자리(연수단원)-창작실연 모집 경기 해금 대금 피리 해금 외 2 세종국악관현악단 2026.08.18",
    "url": "https://www.artinfokorea.com/jobs/479",
-   "date": "2026-08-19",
+   "date": "2026-08-24",
    "deadline": "2026-08-28",
    "kind": "단원",
    "tier": "프로",
@@ -143,61 +143,12 @@
    "officialUrl": "https://www.sejonggugak.com/notices?slug=2026-%EC%98%88%EC%88%A0%EA%B8%B0%EB%B0%98-%EC%B2%AD%EB%85%84%EC%9D%BC%EC%9E%90%EB%A6%AC%EC%97%B0%EC%88%98%EB%8B%A8%EC%9B%90-%EC%B0%BD%EC%9E%91%EC%8B%A4%EC%97%B0-%EB%AA%A8%EC%A7%91",
    "channel": "artinfo",
    "layer": "A",
+   "positions": [
+    "단원"
+   ],
    "deadlineFrom": "page",
-   "positions": [
-    "단원"
-   ],
-   "firstSeen": "2026-08-19",
-   "isNew": false,
-   "extVer": 4
-  },
-  {
-   "id": "1c2b1191adccd831",
-   "org": "아트인포(클래식 채용)",
-   "region": "경기",
-   "source": "artinfokorea.com",
-   "title": "세종국악관현악단, 2026년 문화예술 연수단원 추가모집 공고(창작실연 / 모집 기간 연장)",
-   "url": "https://www.artinfokorea.com/jobs/470",
-   "date": "2026-08-19",
-   "deadline": "2027-07-08",
-   "kind": "단원",
-   "tier": "프로",
-   "inst": "현악",
-   "instDetails": [],
-   "personnel": null,
-   "officialUrl": "http://www.sejonggugak.com",
-   "channel": "artinfo",
-   "layer": "A",
-   "deadlineFrom": "page+yearfix",
-   "positions": [
-    "단원"
-   ],
-   "firstSeen": "2026-07-08",
-   "isNew": false,
-   "extVer": 4
-  },
-  {
-   "id": "0a41b6382b6ad0fc",
-   "org": "세종문화회관(서울시예술단)",
-   "region": "서울",
-   "source": "sejongpac.or.kr",
-   "title": "2026년도 서울시청소년국악단 프로젝트 단원 모집",
-   "url": "https://www.sejongpac.or.kr/portal/bbs/B0000065/view.do?nttId=50037&menuNo=200571&pageIndex=1",
-   "date": "2026-06-11",
-   "deadline": "2026-06-25",
-   "kind": "단원",
-   "tier": "전공·입시",
-   "inst": "전체",
-   "instDetails": [],
-   "personnel": null,
-   "channel": "sejongpac",
-   "layer": "B",
-   "deadlineFrom": "page+yearfix",
-   "positions": [
-    "단원"
-   ],
-   "firstSeen": "2026-07-08",
-   "isNew": false,
+   "firstSeen": "2026-08-25",
+   "isNew": true,
    "extVer": 4
   }
  ]
