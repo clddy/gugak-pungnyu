@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-09-01 03:20",
+ "collectedAt": "2026-09-02 03:20",
  "sourceCount": 13,
  "okCount": 13,
  "sources": [
@@ -9,7 +9,7 @@
    "layer": "A",
    "poll": "daily",
    "ok": true,
-   "raw": 0,
+   "raw": 2,
    "kept": 0
   },
   {
@@ -19,7 +19,7 @@
    "poll": "daily",
    "ok": true,
    "raw": 10,
-   "kept": 1
+   "kept": 2
   },
   {
    "id": "incheon",
@@ -54,7 +54,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 21,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -72,7 +72,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -90,7 +90,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 21,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -99,7 +99,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -108,7 +108,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -117,11 +117,69 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 0,
    "kept": 0
   }
  ],
  "items": [
+  {
+   "id": "ffffeef817e24368",
+   "org": "아트인포(클래식 채용)",
+   "region": "경기",
+   "source": "artinfokorea.com",
+   "title": "세종국악관현악단 [세종국악관현악단]예술기반 청년일자리(연수단원) 창작실연 추가 모집 경기 장구 대금 해금 장구 외 2 세종국악관현악단 2026.09.01",
+   "url": "https://www.artinfokorea.com/jobs/482",
+   "date": "2026-09-01",
+   "deadline": "2026-09-10",
+   "kind": "단원",
+   "tier": "프로",
+   "inst": "현악",
+   "instDetails": [
+    "해금",
+    "대금",
+    "장구"
+   ],
+   "personnel": null,
+   "officialUrl": "https://www.sejonggugak.com/notices?slug=2026-%EC%98%88%EC%88%A0%EA%B8%B0%EB%B0%98-%EC%B2%AD%EB%85%84%EC%9D%BC%EC%9E%90%EB%A6%AC%EC%97%B0%EC%88%98%EB%8B%A8%EC%9B%90-%EC%B0%BD%EC%9E%91%EC%8B%A4%EC%97%B0-%EC%B6%94%EA%B0%80-%EB%AA%A8%EC%A7%91",
+   "channel": "artinfo",
+   "layer": "A",
+   "positions": [
+    "단원"
+   ],
+   "deadlineFrom": "page",
+   "firstSeen": "2026-09-02",
+   "isNew": true,
+   "extVer": 4
+  },
+  {
+   "id": "4bec27441bddc852",
+   "org": "아트인포(클래식 채용)",
+   "region": "경기",
+   "source": "artinfokorea.com",
+   "title": "세종국악관현악단 세종국악관현악단, 2026년 예술기반 청년일자리(연수단원)-창작실연 모집 경기 해금 대금 피리 해금 외 2 세종국악관현악단 2026.08.18",
+   "url": "https://www.artinfokorea.com/jobs/479",
+   "date": "2026-09-01",
+   "deadline": "2027-08-28",
+   "kind": "단원",
+   "tier": "프로",
+   "inst": "현악",
+   "instDetails": [
+    "해금",
+    "대금",
+    "피리"
+   ],
+   "personnel": null,
+   "officialUrl": "https://www.sejonggugak.com/notices?slug=2026-%EC%98%88%EC%88%A0%EA%B8%B0%EB%B0%98-%EC%B2%AD%EB%85%84%EC%9D%BC%EC%9E%90%EB%A6%AC%EC%97%B0%EC%88%98%EB%8B%A8%EC%9B%90-%EC%B0%BD%EC%9E%91%EC%8B%A4%EC%97%B0-%EB%AA%A8%EC%A7%91",
+   "channel": "artinfo",
+   "layer": "A",
+   "deadlineFrom": "page+yearfix",
+   "positions": [
+    "단원"
+   ],
+   "firstSeen": "2026-08-25",
+   "isNew": false,
+   "extVer": 4
+  },
   {
    "id": "327c39988427683a",
    "org": "대구문화예술회관(시립교향악단)",
@@ -145,35 +203,6 @@
    ],
    "contract": "비상임",
    "firstSeen": "2026-08-31",
-   "isNew": false,
-   "extVer": 4
-  },
-  {
-   "id": "4bec27441bddc852",
-   "org": "아트인포(클래식 채용)",
-   "region": "경기",
-   "source": "artinfokorea.com",
-   "title": "세종국악관현악단 세종국악관현악단, 2026년 예술기반 청년일자리(연수단원)-창작실연 모집 경기 해금 대금 피리 해금 외 2 세종국악관현악단 2026.08.18",
-   "url": "https://www.artinfokorea.com/jobs/479",
-   "date": "2026-08-24",
-   "deadline": "2026-08-28",
-   "kind": "단원",
-   "tier": "프로",
-   "inst": "현악",
-   "instDetails": [
-    "해금",
-    "대금",
-    "피리"
-   ],
-   "personnel": null,
-   "officialUrl": "https://www.sejonggugak.com/notices?slug=2026-%EC%98%88%EC%88%A0%EA%B8%B0%EB%B0%98-%EC%B2%AD%EB%85%84%EC%9D%BC%EC%9E%90%EB%A6%AC%EC%97%B0%EC%88%98%EB%8B%A8%EC%9B%90-%EC%B0%BD%EC%9E%91%EC%8B%A4%EC%97%B0-%EB%AA%A8%EC%A7%91",
-   "channel": "artinfo",
-   "layer": "A",
-   "deadlineFrom": "page",
-   "positions": [
-    "단원"
-   ],
-   "firstSeen": "2026-08-25",
    "isNew": false,
    "extVer": 4
   }
