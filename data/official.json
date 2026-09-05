@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-09-05 03:20",
+ "collectedAt": "2026-09-06 03:20",
  "sourceCount": 13,
  "okCount": 13,
  "sources": [
@@ -123,13 +123,13 @@
  ],
  "items": [
   {
-   "id": "ffffeef817e24368",
+   "id": "3201e2e8881c7478",
    "org": "아트인포(클래식 채용)",
    "region": "경기",
    "source": "artinfokorea.com",
-   "title": "세종국악관현악단 [세종국악관현악단]예술기반 청년일자리(연수단원) 창작실연 추가 모집 경기 장구 대금 해금 장구 외 2 세종국악관현악단 2026.09.01",
+   "title": "세종국악관현악단 [세종국악관현악단]예술기반 청년일자리(연수단원) 창작실연 추가 모집 경기 대금 해금 장구 대금 외 2 세종국악관현악단 2026.09.01",
    "url": "https://www.artinfokorea.com/jobs/482",
-   "date": "2026-09-01",
+   "date": "2026-09-05",
    "deadline": "2026-09-10",
    "kind": "단원",
    "tier": "프로",
@@ -143,22 +143,22 @@
    "officialUrl": "https://www.sejonggugak.com/notices?slug=2026-%EC%98%88%EC%88%A0%EA%B8%B0%EB%B0%98-%EC%B2%AD%EB%85%84%EC%9D%BC%EC%9E%90%EB%A6%AC%EC%97%B0%EC%88%98%EB%8B%A8%EC%9B%90-%EC%B0%BD%EC%9E%91%EC%8B%A4%EC%97%B0-%EC%B6%94%EA%B0%80-%EB%AA%A8%EC%A7%91",
    "channel": "artinfo",
    "layer": "A",
-   "deadlineFrom": "page",
    "positions": [
     "단원"
    ],
-   "firstSeen": "2026-09-02",
-   "isNew": false,
+   "deadlineFrom": "page",
+   "firstSeen": "2026-09-06",
+   "isNew": true,
    "extVer": 4
   },
   {
-   "id": "4bec27441bddc852",
+   "id": "0af2626283e25fd8",
    "org": "아트인포(클래식 채용)",
    "region": "경기",
    "source": "artinfokorea.com",
-   "title": "세종국악관현악단 세종국악관현악단, 2026년 예술기반 청년일자리(연수단원)-창작실연 모집 경기 해금 대금 피리 해금 외 2 세종국악관현악단 2026.08.18",
+   "title": "세종국악관현악단 세종국악관현악단, 2026년 예술기반 청년일자리(연수단원)-창작실연 모집 경기 대금 해금 피리 대금 외 2 세종국악관현악단 2026.08.18",
    "url": "https://www.artinfokorea.com/jobs/479",
-   "date": "2026-09-01",
+   "date": "2026-09-05",
    "deadline": "2027-08-28",
    "kind": "단원",
    "tier": "프로",
@@ -172,12 +172,12 @@
    "officialUrl": "https://www.sejonggugak.com/notices?slug=2026-%EC%98%88%EC%88%A0%EA%B8%B0%EB%B0%98-%EC%B2%AD%EB%85%84%EC%9D%BC%EC%9E%90%EB%A6%AC%EC%97%B0%EC%88%98%EB%8B%A8%EC%9B%90-%EC%B0%BD%EC%9E%91%EC%8B%A4%EC%97%B0-%EB%AA%A8%EC%A7%91",
    "channel": "artinfo",
    "layer": "A",
-   "deadlineFrom": "page+yearfix",
    "positions": [
     "단원"
    ],
-   "firstSeen": "2026-08-25",
-   "isNew": false,
+   "deadlineFrom": "page+yearfix",
+   "firstSeen": "2026-09-06",
+   "isNew": true,
    "extVer": 4
   },
   {
