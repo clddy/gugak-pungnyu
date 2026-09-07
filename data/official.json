@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-09-06 03:20",
+ "collectedAt": "2026-09-07 09:05",
  "sourceCount": 13,
  "okCount": 13,
  "sources": [
@@ -27,7 +27,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 14,
    "kept": 0
   },
   {
@@ -36,7 +36,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 1,
    "kept": 1
   },
   {
@@ -45,7 +45,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 15,
    "kept": 0
   },
   {
@@ -63,7 +63,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -81,7 +81,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 32,
    "kept": 0
   },
   {
@@ -143,12 +143,12 @@
    "officialUrl": "https://www.sejonggugak.com/notices?slug=2026-%EC%98%88%EC%88%A0%EA%B8%B0%EB%B0%98-%EC%B2%AD%EB%85%84%EC%9D%BC%EC%9E%90%EB%A6%AC%EC%97%B0%EC%88%98%EB%8B%A8%EC%9B%90-%EC%B0%BD%EC%9E%91%EC%8B%A4%EC%97%B0-%EC%B6%94%EA%B0%80-%EB%AA%A8%EC%A7%91",
    "channel": "artinfo",
    "layer": "A",
+   "deadlineFrom": "page",
    "positions": [
     "단원"
    ],
-   "deadlineFrom": "page",
    "firstSeen": "2026-09-06",
-   "isNew": true,
+   "isNew": false,
    "extVer": 4
   },
   {
@@ -172,12 +172,12 @@
    "officialUrl": "https://www.sejonggugak.com/notices?slug=2026-%EC%98%88%EC%88%A0%EA%B8%B0%EB%B0%98-%EC%B2%AD%EB%85%84%EC%9D%BC%EC%9E%90%EB%A6%AC%EC%97%B0%EC%88%98%EB%8B%A8%EC%9B%90-%EC%B0%BD%EC%9E%91%EC%8B%A4%EC%97%B0-%EB%AA%A8%EC%A7%91",
    "channel": "artinfo",
    "layer": "A",
+   "deadlineFrom": "page+yearfix",
    "positions": [
     "단원"
    ],
-   "deadlineFrom": "page+yearfix",
    "firstSeen": "2026-09-06",
-   "isNew": true,
+   "isNew": false,
    "extVer": 4
   },
   {
