@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-09-16 16:13",
+ "collectedAt": "2026-09-17 16:04",
  "sourceCount": 13,
  "okCount": 13,
  "sources": [
@@ -9,7 +9,7 @@
    "layer": "A",
    "poll": "daily",
    "ok": true,
-   "raw": 1,
+   "raw": 2,
    "kept": 0
   },
   {
@@ -27,7 +27,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 12,
    "kept": 0
   },
   {
@@ -36,7 +36,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 2,
    "kept": 1
   },
   {
@@ -45,7 +45,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 15,
    "kept": 0
   },
   {
@@ -63,7 +63,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -81,7 +81,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 40,
    "kept": 0
   },
   {
@@ -117,7 +117,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "raw": 0,
+   "skipped": true,
    "kept": 0
   }
  ],
