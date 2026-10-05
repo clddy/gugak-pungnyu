@@ -1,7 +1,7 @@
 {
- "collectedAt": "2026-10-04 03:20",
+ "collectedAt": "2026-10-05 13:05",
  "sourceCount": 13,
- "okCount": 13,
+ "okCount": 12,
  "sources": [
   {
    "id": "artmore",
@@ -9,7 +9,7 @@
    "layer": "A",
    "poll": "daily",
    "ok": true,
-   "raw": 2,
+   "raw": 1,
    "kept": 0
   },
   {
@@ -27,7 +27,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 11,
    "kept": 0
   },
   {
@@ -36,7 +36,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 4,
    "kept": 1
   },
   {
@@ -45,7 +45,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 15,
    "kept": 0
   },
   {
@@ -63,7 +63,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -80,9 +80,8 @@
    "name": "창원문화재단",
    "layer": "B",
    "poll": "weekly",
-   "ok": true,
-   "skipped": true,
-   "kept": 0
+   "ok": false,
+   "error": "ReadTimeout: HTTPSConnectionPool(host='www.cwcf.or.kr', port=443): Read timed out. (read timeout=20)"
   },
   {
    "id": "ulsan",
