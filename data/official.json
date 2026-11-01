@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-10-31 09:54",
+ "collectedAt": "2026-11-01 15:09",
  "sourceCount": 13,
  "okCount": 13,
  "sources": [
@@ -9,7 +9,7 @@
    "layer": "A",
    "poll": "daily",
    "ok": true,
-   "raw": 1,
+   "raw": 2,
    "kept": 0
   },
   {
