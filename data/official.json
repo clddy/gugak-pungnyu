@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-11-01 15:09",
+ "collectedAt": "2026-11-02 16:40",
  "sourceCount": 13,
  "okCount": 13,
  "sources": [
@@ -9,7 +9,7 @@
    "layer": "A",
    "poll": "daily",
    "ok": true,
-   "raw": 2,
+   "raw": 1,
    "kept": 0
   },
   {
@@ -27,7 +27,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 12,
    "kept": 0
   },
   {
@@ -36,8 +36,8 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
-   "kept": 0
+   "raw": 3,
+   "kept": 1
   },
   {
    "id": "bscc",
@@ -45,7 +45,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 15,
    "kept": 0
   },
   {
@@ -63,7 +63,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -81,7 +81,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 36,
    "kept": 0
   },
   {
@@ -122,6 +122,32 @@
   }
  ],
  "items": [
+  {
+   "id": "07a9d8eccde7d4e8",
+   "org": "대구문화예술회관(시립교향악단)",
+   "region": "대구",
+   "source": "daeguartscenter.or.kr",
+   "title": "대구광역시 시립국악단 육아휴직 대체근로자(가야금) 공개모집 공고",
+   "url": "https://daeguartscenter.or.kr/index.do?menu_id=00001528&nttId=11345",
+   "date": "2026-11-02",
+   "deadline": null,
+   "kind": "객원·대체",
+   "tier": "프로",
+   "inst": "현악",
+   "instDetails": [
+    "가야금"
+   ],
+   "personnel": null,
+   "channel": "daegu",
+   "layer": "B",
+   "positions": [
+    "단원"
+   ],
+   "auditionDate": "11/2 · 11/2",
+   "firstSeen": "2026-11-02",
+   "isNew": true,
+   "extVer": 4
+  },
   {
    "id": "a9ae74e6ce307f24",
    "org": "아트인포(클래식 채용)",
