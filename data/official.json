@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-11-03 10:29",
+ "collectedAt": "2026-11-04 17:18",
  "sourceCount": 13,
  "okCount": 13,
  "sources": [
@@ -9,7 +9,7 @@
    "layer": "A",
    "poll": "daily",
    "ok": true,
-   "raw": 1,
+   "raw": 0,
    "kept": 0
   },
   {
@@ -54,7 +54,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 21,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -72,7 +72,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -90,7 +90,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 16,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -99,7 +99,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -108,7 +108,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -117,42 +117,17 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 0,
    "kept": 0
   }
  ],
  "items": [
   {
-   "id": "d3924725d374db4a",
+   "id": "cdfd45db7b721897",
    "org": "아트인포(클래식 채용)",
    "region": "경기",
    "source": "artinfokorea.com",
-   "title": "세종국악관현악단 2026년 예술기반 청년일자리(연수단원-작편곡) 추가 모집 공고 세종국악관현악단 · 경기 · 한 달 전 작곡",
-   "url": "https://www.artinfokorea.com/jobs/484",
-   "date": null,
-   "deadline": "2026-09-29",
-   "kind": "단원",
-   "tier": "프로",
-   "inst": "현악",
-   "instDetails": [],
-   "personnel": null,
-   "officialUrl": "https://www.sejonggugak.com/",
-   "channel": "artinfo",
-   "layer": "A",
-   "positions": [
-    "단원"
-   ],
-   "deadlineFrom": "page",
-   "firstSeen": "2026-11-03",
-   "isNew": true,
-   "extVer": 4
-  },
-  {
-   "id": "b5bc518f547014ce",
-   "org": "아트인포(클래식 채용)",
-   "region": "경기",
-   "source": "artinfokorea.com",
-   "title": "세종국악관현악단 [세종국악관현악단]예술기반 청년일자리(연수단원) 창작실연 추가 모집 세종국악관현악단 · 경기 · 2달 전 해금 · 대금 · 장구",
+   "title": "세종국악관현악단 [세종국악관현악단]예술기반 청년일자리(연수단원) 창작실연 추가 모집 세종국악관현악단 · 경기 · 2달 전 장구 · 해금 · 대금",
    "url": "https://www.artinfokorea.com/jobs/482",
    "date": null,
    "deadline": "2026-09-10",
@@ -172,8 +147,33 @@
     "단원"
    ],
    "deadlineFrom": "page",
-   "firstSeen": "2026-11-03",
+   "firstSeen": "2026-11-04",
    "isNew": true,
+   "extVer": 4
+  },
+  {
+   "id": "d3924725d374db4a",
+   "org": "아트인포(클래식 채용)",
+   "region": "경기",
+   "source": "artinfokorea.com",
+   "title": "세종국악관현악단 2026년 예술기반 청년일자리(연수단원-작편곡) 추가 모집 공고 세종국악관현악단 · 경기 · 한 달 전 작곡",
+   "url": "https://www.artinfokorea.com/jobs/484",
+   "date": null,
+   "deadline": "2026-09-29",
+   "kind": "단원",
+   "tier": "프로",
+   "inst": "현악",
+   "instDetails": [],
+   "personnel": null,
+   "officialUrl": "https://www.sejonggugak.com/",
+   "channel": "artinfo",
+   "layer": "A",
+   "deadlineFrom": "page",
+   "positions": [
+    "단원"
+   ],
+   "firstSeen": "2026-11-03",
+   "isNew": false,
    "extVer": 4
   },
   {
