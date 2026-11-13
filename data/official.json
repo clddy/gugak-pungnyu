@@ -1,5 +1,5 @@
 {
- "collectedAt": "2026-11-12 10:20",
+ "collectedAt": "2026-11-13 10:55",
  "sourceCount": 13,
  "okCount": 13,
  "sources": [
@@ -9,7 +9,7 @@
    "layer": "A",
    "poll": "daily",
    "ok": true,
-   "raw": 1,
+   "raw": 0,
    "kept": 0
   },
   {
@@ -19,7 +19,7 @@
    "poll": "daily",
    "ok": true,
    "raw": 10,
-   "kept": 1
+   "kept": 0
   },
   {
    "id": "incheon",
@@ -27,7 +27,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 14,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -36,7 +36,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 3,
+   "skipped": true,
    "kept": 1
   },
   {
@@ -45,7 +45,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 15,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -54,7 +54,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 21,
    "kept": 0
   },
   {
@@ -63,7 +63,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 10,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -72,7 +72,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -81,7 +81,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "raw": 25,
+   "skipped": true,
    "kept": 0
   },
   {
@@ -90,7 +90,7 @@
    "layer": "B",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 17,
    "kept": 0
   },
   {
@@ -99,7 +99,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -108,7 +108,7 @@
    "layer": "D",
    "poll": "weekly",
    "ok": true,
-   "skipped": true,
+   "raw": 10,
    "kept": 0
   },
   {
@@ -122,31 +122,6 @@
   }
  ],
  "items": [
-  {
-   "id": "78b54164285bf499",
-   "org": "아트인포(클래식 채용)",
-   "region": "경기",
-   "source": "artinfokorea.com",
-   "title": "세종국악관현악단 2026년 예술기반 청년일자리(연수단원-작편곡) 추가 모집 공고 세종국악관현악단 · 경기 · 2달 전 작곡",
-   "url": "https://www.artinfokorea.com/jobs/484",
-   "date": null,
-   "deadline": "2026-09-29",
-   "kind": "단원",
-   "tier": "프로",
-   "inst": "현악",
-   "instDetails": [],
-   "personnel": null,
-   "officialUrl": "https://www.sejonggugak.com/",
-   "channel": "artinfo",
-   "layer": "A",
-   "deadlineFrom": "page",
-   "positions": [
-    "단원"
-   ],
-   "firstSeen": "2026-11-07",
-   "isNew": false,
-   "extVer": 4
-  },
   {
    "id": "07a9d8eccde7d4e8",
    "org": "대구문화예술회관(시립교향악단)",
